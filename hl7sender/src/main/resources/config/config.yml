@@ -1,0 +1,7 @@
+version: 1.0.0-SNAPSHOT
+
+outbox:
+  location: C:\Hl7
+
+extensions:
+  - .hl7

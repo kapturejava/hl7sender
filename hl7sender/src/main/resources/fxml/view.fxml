@@ -1,18 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.web.WebView?>
-<BorderPane maxHeight="-Infinity"
-            maxWidth="-Infinity"
-            minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="800.0"
-            prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="be.kapture.hl7sender.gui.Hl7App">
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.kapture.hl7sender.gui.Hl7Controller">
+    <top>
+        <Label fx:id="successOrFailureMessage" />
+    </top>
     <center>
-        <WebView fx:id="myWebView" />
+        <VBox spacing="10">
+            <HBox prefWidth="200.0" spacing="10">
+                <Pane prefWidth="50.0" />
+                <Label text="Export location" />
+                <TextField  fx:id="exportLocation"/>
+                <Button text="Browse" onAction="#setExportLocation"/>
+            </HBox>
+         <HBox prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="200.0" prefWidth="50.0" />
+            <TextArea fx:id="hl7MessageField" maxHeight="200" maxWidth="300" />
+            <Pane prefHeight="200.0" prefWidth="50.0" />
+         </HBox>
+        </VBox>
     </center>
+    <bottom>
+        <Button fx:id="sendMessage" onAction="#processMessage" text="Send message" BorderPane.alignment="BOTTOM_RIGHT">
+         <BorderPane.margin>
+            <Insets bottom="30.0" right="50.0" />
+         </BorderPane.margin></Button>
+    </bottom>
 </BorderPane>

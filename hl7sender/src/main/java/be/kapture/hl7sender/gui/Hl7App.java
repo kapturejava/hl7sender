@@ -1,6 +1,5 @@
 package be.kapture.hl7sender.gui;
 
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import org.yaml.snakeyaml.*;
+
 @SpringBootApplication
 public class Hl7App extends Application{
     private ConfigurableApplicationContext springContext;
@@ -17,15 +18,16 @@ public class Hl7App extends Application{
     private FXMLLoader fxmlLoader;
 
     public static void main(String[] args) {
+        Yaml yaml = new Yaml();
         launch(args);
         //SpringApplication.run(Hl7App.class, args);
     }
 
     @Override
     public void init() throws Exception {
-        springContext = SpringApplication.run(Hl7App.class);
-        fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(springContext::getBean);
+            springContext = SpringApplication.run(Hl7App.class);
+            fxmlLoader = new FXMLLoader();
+            fxmlLoader.setControllerFactory(springContext::getBean);
     }
 
     @Override
@@ -34,7 +36,8 @@ public class Hl7App extends Application{
         rootNode = fxmlLoader.load();
 
         primaryStage.setTitle("Hello World");
-        Scene scene = new Scene(rootNode, 800, 600);
+        Scene scene = new Scene(rootNode);
+
         primaryStage.setScene(scene);
         primaryStage.show();
     }
