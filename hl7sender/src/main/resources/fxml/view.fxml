@@ -10,29 +10,37 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.kapture.hl7sender.gui.Hl7Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="be.kapture.hl7sender.gui.Hl7Controller">
     <top>
-        <Label fx:id="successOrFailureMessage" />
+        <Label fx:id="successOrFailureMessage"/>
     </top>
     <center>
         <VBox spacing="10">
             <HBox prefWidth="200.0" spacing="10">
-                <Pane prefWidth="50.0" />
-                <Label text="Export location" />
-                <TextField  fx:id="exportLocation"/>
-                <Button text="Browse" onAction="#setExportLocation"/>
+                <Label text="Import configuration" minWidth="50"/>
+                <TextField fx:id="importConfigurationField" />
+                <Button text="Browse" onAction="#setConfigurationLocation"/>
+                <Button text="Apply" onAction="#updateConfiguration"/>
             </HBox>
-         <HBox prefHeight="200.0" prefWidth="200.0">
-            <Pane prefHeight="200.0" prefWidth="50.0" />
-            <TextArea fx:id="hl7MessageField" maxHeight="200" maxWidth="300" />
-            <Pane prefHeight="200.0" prefWidth="50.0" />
-         </HBox>
+            <HBox prefWidth="200.0" spacing="10">
+                <Label text="Export location"/>
+                <TextField fx:id="exportLocationField"/>
+                <Button text="Browse" onAction="#setExportLocationField"/>
+            </HBox>
+            <HBox prefHeight="200.0" prefWidth="200.0">
+                <Pane prefHeight="200.0" prefWidth="50.0"/>
+                <TextArea fx:id="hl7MessageField" maxHeight="200" maxWidth="300"/>
+                <Pane prefHeight="200.0" prefWidth="50.0"/>
+            </HBox>
         </VBox>
     </center>
     <bottom>
         <Button fx:id="sendMessage" onAction="#processMessage" text="Send message" BorderPane.alignment="BOTTOM_RIGHT">
-         <BorderPane.margin>
-            <Insets bottom="30.0" right="50.0" />
-         </BorderPane.margin></Button>
+            <BorderPane.margin>
+                <Insets bottom="30.0" right="50.0"/>
+            </BorderPane.margin>
+        </Button>
     </bottom>
 </BorderPane>

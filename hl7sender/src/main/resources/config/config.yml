@@ -1,7 +1,4 @@
 version: 1.0.0-SNAPSHOT
-
-outbox:
-  location: C:\Hl7
-
-extensions:
-  - .hl7
+exportLocation: C:\Hl7
+defaultFileName: outgoing_message
+fileExtension: .hl7
